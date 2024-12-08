@@ -2,7 +2,10 @@ import { readFile } from 'fs/promises'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 
-export async function readInput(metaUrl: string, split = '\n') {
+export async function readInput(
+  metaUrl: string,
+  split: string | RegExp = '\n'
+) {
   const __filename = fileURLToPath(metaUrl)
   const __dirname = dirname(__filename)
   try {

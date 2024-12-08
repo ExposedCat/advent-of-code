@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for year in 2023; do
+for year in 2024; do
   for task in src/$year/*; do
     cp "$task/input.txt" "build/src/$year/$(basename $task)"
   done

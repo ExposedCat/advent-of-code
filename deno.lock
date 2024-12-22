@@ -1,0 +1,63 @@
+{
+  "version": "4",
+  "specifiers": {
+    "npm:@cdxoo/dbscan@^1.1.1": "1.1.1",
+    "npm:@types/pathfinding@^0.0.9": "0.0.9",
+    "npm:astar-typescript@^1.2.7": "1.2.7",
+    "npm:fast-astar@^1.0.6": "1.0.6",
+    "npm:javascript-astar@~0.4.1": "0.4.1",
+    "npm:pathfinding@~0.4.18": "0.4.18",
+    "npm:pfinder@0.7": "0.7.0",
+    "npm:tinyqueue@3": "3.0.0"
+  },
+  "npm": {
+    "@cdxoo/dbscan@1.1.1": {
+      "integrity": "sha512-NTgCGeH4/QpMrDFZrPWMoyHutWy2S+ZsBxi4yM41MMoONDWfE+2KvOptOCjCnkbpvEf8K/Ob0ITPrMf/wP7Now=="
+    },
+    "@types/pathfinding@0.0.9": {
+      "integrity": "sha512-b7tf4+gVc8+sRETzJ7pCeqhknQ9XVgYqbH5+ekcHmO5Hf/fy9BTBzSstE9mcOQc81Y0qITda8tF/UsN3huIMwg=="
+    },
+    "astar-typescript@1.2.7": {
+      "integrity": "sha512-1M9d8Mpu75oalRgdMi4QGdsEg1HMjvZXO4x31LIYR1uSyd8RKjfdQSYXQts2Nzg6PzxtGQvEYrikm+UjCATGWQ==",
+      "dependencies": [
+        "lodash"
+      ]
+    },
+    "fast-astar@1.0.6": {
+      "integrity": "sha512-r23aD+DIl2Y/XdhP/Z3kDyi9dJ4BID6z49gjc+lQo1fLBqi9uEkaevcX4v0bqHGxjwc7GKbt/OPRM/UwTCfiEw=="
+    },
+    "heap@0.2.5": {
+      "integrity": "sha512-G7HLD+WKcrOyJP5VQwYZNC3Z6FcQ7YYjEFiFoIj8PfEr73mu421o8B1N5DKUcc8K37EsJ2XXWA8DtrDz/2dReg=="
+    },
+    "javascript-astar@0.4.1": {
+      "integrity": "sha512-/SlmWkL/Ww0tu737MLvKMe2LC4sr081bL4YOgwgugFbKUjxTuQ6WLzGkibCo4buubWo0yT52bbHZlhwcwAYCzQ=="
+    },
+    "lodash@4.17.21": {
+      "integrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
+    },
+    "pathfinding@0.4.18": {
+      "integrity": "sha512-R0TGEQ9GRcFCDvAWlJAWC+KGJ9SLbW4c0nuZRcioVlXVTlw+F5RvXQ8SQgSqI9KXWC1ew95vgmIiyaWTlCe9Ag==",
+      "dependencies": [
+        "heap"
+      ]
+    },
+    "pfinder@0.7.0": {
+      "integrity": "sha512-zIgtH98cXCpjKB1TSfeSow3vOrdaAnk6Yty+pCZI7jhGFYJndwwRKspvycPQZ0sdWfb1seaoS7q61k6w6gk7bQ=="
+    },
+    "tinyqueue@3.0.0": {
+      "integrity": "sha512-gRa9gwYU3ECmQYv3lslts5hxuIa90veaEcxDYuu3QGOIAEM2mOZkVHp48ANJuu1CURtRdHKUBY5Lm1tHV+sD4g=="
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "npm:@cdxoo/dbscan@^1.1.1",
+      "npm:@types/pathfinding@^0.0.9",
+      "npm:astar-typescript@^1.2.7",
+      "npm:fast-astar@^1.0.6",
+      "npm:javascript-astar@~0.4.1",
+      "npm:pathfinding@~0.4.18",
+      "npm:pfinder@0.7",
+      "npm:tinyqueue@3"
+    ]
+  }
+}

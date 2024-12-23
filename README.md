@@ -1,5 +1,5 @@
 # Advent Of Code | TypeScript | Deno
-Note that some tasks are missing and ineffective, I've never consumed a single code protein bar
+Note that some tasks are missing or ineffective, I've never consumed a single code protein bar
 
 ## State
 ### 2023

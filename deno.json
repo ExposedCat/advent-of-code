@@ -3,13 +3,7 @@
     "run": "./run"
   },
   "imports": {
-    "@cdxoo/dbscan": "npm:@cdxoo/dbscan@^1.1.1",
     "@types/pathfinding": "npm:@types/pathfinding@^0.0.9",
-    "astar-typescript": "npm:astar-typescript@^1.2.7",
-    "fast-astar": "npm:fast-astar@^1.0.6",
-    "javascript-astar": "npm:javascript-astar@^0.4.1",
-    "pathfinding": "npm:pathfinding@^0.4.18",
-    "pfinder": "npm:pfinder@^0.7.0",
-    "tinyqueue": "npm:tinyqueue@^3.0.0"
+    "pathfinding": "npm:pathfinding@^0.4.18"
   }
 }

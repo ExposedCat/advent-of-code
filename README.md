@@ -28,7 +28,7 @@ Note that some tasks are missing or ineffective, I've never consumed a single co
 - Day 20 +
 - Day 21 +
 - Day 22 ++
-- Day 23 --
+- Day 23 ++
 - Day 24 --
 - Day 25 --
 

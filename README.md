@@ -29,8 +29,8 @@ Note that some tasks are missing or ineffective, I've never consumed a single co
 - Day 21 +
 - Day 22 ++
 - Day 23 ++
-- Day 24 --
-- Day 25 --
+- Day 24 +-
+- Day 25 +-
 
 ## Running
 - Install [Deno](https://deno.com/)

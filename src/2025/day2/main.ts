@@ -4,12 +4,8 @@ import { sumBy } from "../../utils/math.ts";
 const input = await Deno.readTextFile("./src/2025/day2/input.txt");
 
 const ids = input
-	.split("\n")
-	.flatMap(
-		line => line
-			.split(",")
-			.map(item => item.split("-").map(Number))
-	);
+	.split(",")
+	.map(item => item.split("-").map(Number));
 
 const result = sumBy(ids, ([start, end]) => {
 	let total = 0;

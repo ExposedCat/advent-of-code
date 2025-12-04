@@ -21,3 +21,5 @@ export const makeGrid = <T = number>(
   );
 
 export const DIRECTIONS = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+
+export const EIGHT_DIRECTIONS = [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [-1, 1], [1, -1], [-1, -1]];

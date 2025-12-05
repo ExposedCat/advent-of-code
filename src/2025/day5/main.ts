@@ -7,7 +7,7 @@ const [part1, part2] = input.trim().split("\n\n");
 const fresh = part1.split("\n").map(line => line.split("-").map(Number));
 const available = part2.split("\n").map(Number);
 
-const START = 1;
+const START = 0;
 const END = 1;
 
 if (IS_PART_2) {
@@ -16,12 +16,8 @@ if (IS_PART_2) {
 	const merged: number[][] = [];
 	for (const [start, end] of fresh) {
 		const last = merged.at(-1);
-		if (!last) {
-			merged.push([start, end]);
-			continue;
-		}
 	
-		if (start <= last[END]) {
+		if (last && start <= last[END]) {
 			last[END] = Math.max(last[END], end);
 			continue;
 		}

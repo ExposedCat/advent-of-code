@@ -1,5 +1,1 @@
-export const range = (length: number, callback: (value: number) => void) => {
-  for (let i = 0; i < length; ++i) {
-    callback(i);
-  }
-};
+export const range = <T>(length: number, callback: (value: number) => T) => Array.from({ length }, (_, i) => callback(i));

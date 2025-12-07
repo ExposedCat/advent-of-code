@@ -1,15 +1,29 @@
 {
-  "version": "4",
+  "version": "5",
   "specifiers": {
+    "npm:@types/graphlib@^2.1.12": "2.1.12",
     "npm:@types/pathfinding@^0.0.9": "0.0.9",
+    "npm:graphlib@^2.1.8": "2.1.8",
     "npm:pathfinding@~0.4.18": "0.4.18"
   },
   "npm": {
+    "@types/graphlib@2.1.12": {
+      "integrity": "sha512-abRfQWMphT2qlXwppQa+CTCtUz/GqxBeozQcMjnOFD/WOKD6sRgxkfG8vq1yagV03447BBzCYhuJ0wiNb+/r+Q=="
+    },
     "@types/pathfinding@0.0.9": {
       "integrity": "sha512-b7tf4+gVc8+sRETzJ7pCeqhknQ9XVgYqbH5+ekcHmO5Hf/fy9BTBzSstE9mcOQc81Y0qITda8tF/UsN3huIMwg=="
     },
+    "graphlib@2.1.8": {
+      "integrity": "sha512-jcLLfkpoVGmH7/InMC/1hIvOPSUh38oJtGhvrOFGzioE1DZ+0YW16RgmOJhHiuWTvGiJQ9Z1Ik43JvkRPRvE+A==",
+      "dependencies": [
+        "lodash"
+      ]
+    },
     "heap@0.2.5": {
       "integrity": "sha512-G7HLD+WKcrOyJP5VQwYZNC3Z6FcQ7YYjEFiFoIj8PfEr73mu421o8B1N5DKUcc8K37EsJ2XXWA8DtrDz/2dReg=="
+    },
+    "lodash@4.17.21": {
+      "integrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
     },
     "pathfinding@0.4.18": {
       "integrity": "sha512-R0TGEQ9GRcFCDvAWlJAWC+KGJ9SLbW4c0nuZRcioVlXVTlw+F5RvXQ8SQgSqI9KXWC1ew95vgmIiyaWTlCe9Ag==",
@@ -20,7 +34,9 @@
   },
   "workspace": {
     "dependencies": [
+      "npm:@types/graphlib@^2.1.12",
       "npm:@types/pathfinding@^0.0.9",
+      "npm:graphlib@^2.1.8",
       "npm:pathfinding@~0.4.18"
     ]
   }

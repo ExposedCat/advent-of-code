@@ -3,7 +3,9 @@
     "run": "./run"
   },
   "imports": {
+    "@types/graphlib": "npm:@types/graphlib@^2.1.12",
     "@types/pathfinding": "npm:@types/pathfinding@^0.0.9",
+    "graphlib": "npm:graphlib@^2.1.8",
     "pathfinding": "npm:pathfinding@^0.4.18"
   }
 }

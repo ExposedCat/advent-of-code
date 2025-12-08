@@ -1,4 +1,5 @@
 import { range } from "../../utils/constructions.ts";
+import { IS_PART_2 } from "../../utils/env.ts";
 import { product } from "../../utils/math.ts";
 
 const input = await Deno.readTextFile("./src/2025/day8/input.txt");
@@ -21,41 +22,43 @@ range(coordinates.length, (i) => {
 
 distances.sort((a, b) => a[2] - b[2])
 
-const circuits: string[][] = []
+const circuits: Set<string>[] = []
 
-for (const distance of distances.slice(0, 1000)) {
+for (const distance of distances.slice(0, IS_PART_2 ? undefined : 1000)) {
 	const [source, target] = distance
-	const circuit = circuits.find(circuit => circuit.includes(source) || circuit.includes(target))
+	const circuit = circuits.find(circuit => circuit.has(source) || circuit.has(target))
 	if (circuit) {
-		circuit.push(source)
-		circuit.push(target)
+		circuit.add(source)
+		circuit.add(target)
 	} else {
-		circuits.push([source, target])
+		circuits.push(new Set([source, target]))
+	}
+	merge: for (let i = 0; i < circuits.length; i++) {
+		for (let j = 0; j < i; j++) {
+			if (i === j) continue
+			if ([...circuits[i]].some(box => circuits[j].has(box))) {
+				for (const box of circuits[j]) {
+					circuits[i].add(box)
+				}
+				circuits.splice(j, 1)
+				break merge
+			}
+		}
+	}
+	if (IS_PART_2 && circuits[0].size === coordinates.length) {
+		const [sourceX] = source.split(',')
+		const [targetX] = target.split(',')
+		console.log(Number(sourceX) * Number(targetX))
+		break
 	}
 }
 
-let mergedCircuits: string[][] = []
-do {
-	const newMerged = circuits.reduce((acc, circuit) => {
-		const merged = acc.find(merged => merged.some(box => circuit.includes(box)))
-		if (merged) {
-			merged.push(...circuit)
-		} else {
-			acc.push(circuit)
-		}
-		return acc
-	}, [] as string[][])
-	if (newMerged.length !== mergedCircuits.length) {
-		mergedCircuits = newMerged
-	} else {
-		break
-	}
-} while (true)
-
-const sizes = mergedCircuits.map(circuit => new Set(circuit).size)
-const largest = range(3, () => {
-	const largest = Math.max(...sizes)
-	sizes.splice(sizes.indexOf(largest), 1)
-	return largest
-})
-console.log(product(largest))
+if (!IS_PART_2) {
+	const sizes = circuits.map(circuit => circuit.size)
+	const largest = range(3, () => {
+		const largest = Math.max(...sizes)
+		sizes.splice(sizes.indexOf(largest), 1)
+		return largest
+	})
+	console.log(product(largest))
+}

@@ -3,8 +3,8 @@
 		"run": "./run"
 	},
 	"imports": {
+		"@knorpelsenf/knorpelsolve": "jsr:@knorpelsenf/knorpelsolve@^1.5.1",
 		"@types/pathfinding": "npm:@types/pathfinding@^0.0.9",
-		"javascript-lp-solver": "npm:javascript-lp-solver@^0.4.24",
 		"pathfinding": "npm:pathfinding@^0.4.18"
 	}
 }

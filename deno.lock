@@ -1,9 +1,33 @@
 {
   "version": "5",
   "specifiers": {
+    "jsr:@knorpelsenf/knorpelsolve@^1.5.1": "1.5.1",
+    "jsr:@std/fs@^1.0.20": "1.0.20",
+    "jsr:@std/internal@^1.0.12": "1.0.12",
+    "jsr:@std/path@^1.1.3": "1.1.3",
     "npm:@types/pathfinding@^0.0.9": "0.0.9",
-    "npm:javascript-lp-solver@~0.4.24": "0.4.24",
     "npm:pathfinding@~0.4.18": "0.4.18"
+  },
+  "jsr": {
+    "@knorpelsenf/knorpelsolve@1.5.1": {
+      "integrity": "a90817da1761f88a553cc89ff1ea6cbbdb85790e5f6f14578b4c358c008141b0",
+      "dependencies": [
+        "jsr:@std/fs",
+        "jsr:@std/path"
+      ]
+    },
+    "@std/fs@1.0.20": {
+      "integrity": "e953206aae48d46ee65e8783ded459f23bec7dd1f3879512911c35e5484ea187"
+    },
+    "@std/internal@1.0.12": {
+      "integrity": "972a634fd5bc34b242024402972cd5143eac68d8dffaca5eaa4dba30ce17b027"
+    },
+    "@std/path@1.1.3": {
+      "integrity": "b015962d82a5e6daea980c32b82d2c40142149639968549c649031a230b1afb3",
+      "dependencies": [
+        "jsr:@std/internal"
+      ]
+    }
   },
   "npm": {
     "@types/pathfinding@0.0.9": {
@@ -11,9 +35,6 @@
     },
     "heap@0.2.5": {
       "integrity": "sha512-G7HLD+WKcrOyJP5VQwYZNC3Z6FcQ7YYjEFiFoIj8PfEr73mu421o8B1N5DKUcc8K37EsJ2XXWA8DtrDz/2dReg=="
-    },
-    "javascript-lp-solver@0.4.24": {
-      "integrity": "sha512-5edoDKnMrt/u3M6GnZKDDIPxOyFOg+WrwDv8mjNiMC2DePhy2H9/FFQgf4ggywaXT1utvkxusJcjQUER72cZmA=="
     },
     "pathfinding@0.4.18": {
       "integrity": "sha512-R0TGEQ9GRcFCDvAWlJAWC+KGJ9SLbW4c0nuZRcioVlXVTlw+F5RvXQ8SQgSqI9KXWC1ew95vgmIiyaWTlCe9Ag==",
@@ -24,8 +45,8 @@
   },
   "workspace": {
     "dependencies": [
+      "jsr:@knorpelsenf/knorpelsolve@^1.5.1",
       "npm:@types/pathfinding@^0.0.9",
-      "npm:javascript-lp-solver@~0.4.24",
       "npm:pathfinding@~0.4.18"
     ]
   }

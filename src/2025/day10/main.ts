@@ -1,8 +1,8 @@
 import { unorderedCombinations } from "../../utils/combinations.ts";
 import { BREAK, range } from "../../utils/constructions.ts";
 import { IS_PART_2 } from "../../utils/env.ts";
-import { lpSolve } from "../../utils/lp.ts";
 import { sum, sumBy } from "../../utils/math.ts";
+import { load, add, mul, Variable, Expression } from "@knorpelsenf/knorpelsolve";
 
 const input = await Deno.readTextFile("./src/2025/day10/input.txt");
 
@@ -33,42 +33,46 @@ if (!IS_PART_2) {
 	})))
 	console.log(total);
 } else {
-	const totals: number[] = [];
+	using lib = await load();
 
-	for (let machine = 0; machine < list.length; machine++) {
-		const { buttons, joltage, target } = list[machine];
-
-		const counterCount = Math.max(target.length, joltage.length);
+	const total = sumBy(list, ({ buttons, joltage }, machine) => {
+		const counterCount = Math.max(buttons[0]?.length ?? 0, joltage.length);
 		const variableNames = buttons.map((_, i) => `${machine}_${i}`);
 
-		const constraints = Object.fromEntries(
-			range<[string, { min: number; max: number }]>(counterCount, (counterIdx) => {
-				const needed = joltage[counterIdx] ?? 0;
-				return [`counter_${counterIdx}`, { min: needed, max: needed }];
-			}),
+		const problem = lib.problem();
+		const variables = buttons.map((_, i) =>
+			problem.variable(variableNames[i], { min: 0, integer: true })
 		);
 
-		const variables = Object.fromEntries(
-			buttons.map((button, idx) => {
-				const entries = button.reduce<Record<string, number>>((entryAcc, counter) => {
-					const key = `counter_${counter}`;
-					entryAcc[key] = (entryAcc[key] ?? 0) + 1;
-					return entryAcc;
-				}, { total: 1 });
-				return [variableNames[idx], entries];
-			}),
-		);
+		range(counterCount, counter => {
+			const needed = joltage[counter] ?? 0;
 
-		const { result } = lpSolve({
-			optimize: "total",
-			opType: "min",
-			constraints,
-			variables,
-			ints: Object.fromEntries(variableNames.map((name) => [name, 1])),
+			let expression: Variable | Expression | null = null;
+
+			range(buttons.length, (buttonIndex) => {
+				const coefficient = buttons[buttonIndex].filter(c => c === counter).length;
+				if (!coefficient) return 0;
+
+				const term = coefficient === 1
+					? variables[buttonIndex]
+					: mul(coefficient, variables[buttonIndex]);
+
+				expression = expression === null ? term : add(expression, term);
+				return 0;
+			});
+
+			problem.constraint(expression ?? 0, "==", needed);
+			return 0;
 		});
 
-		totals.push(result);
-	}
+		const objective = variables.reduce(
+			(acc, variable) => acc === 0 ? variable : add(acc, variable),
+			0 as Variable | Expression | number
+		);
 
-	console.log(sum(totals));
+		const solution = problem.minimize(objective as Variable | Expression);
+		return sum(variableNames.map((name) => solution.values.get(name) ?? 0));
+	});
+
+	console.log(total);
 }

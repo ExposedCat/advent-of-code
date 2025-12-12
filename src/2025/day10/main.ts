@@ -1,6 +1,8 @@
-import { range } from "../../utils/constructions.ts";
+import { unorderedCombinations } from "../../utils/combinations.ts";
+import { BREAK, range } from "../../utils/constructions.ts";
+import { IS_PART_2 } from "../../utils/env.ts";
 import { lpSolve } from "../../utils/lp.ts";
-import { sum } from "../../utils/math.ts";
+import { sum, sumBy } from "../../utils/math.ts";
 
 const input = await Deno.readTextFile("./src/2025/day10/input.txt");
 
@@ -13,41 +15,60 @@ const list = input.trim().split("\n").map(line => {
 	return { target, buttons, joltage };
 });
 
-const totals: number[] = [];
+if (!IS_PART_2) {
+	const total = sumBy(list, ({ target, buttons }) => sum(range(buttons.length - 1, (k) => {
+		const combos = unorderedCombinations(buttons, k + 1)
+		for (const combo of combos) {
+			const result = Array.from({ length: target.length }, () => false)
+			for (const button of combo) {
+				for (const position of button) {
+					result[position] = !result[position]
+				}
+			}
+			if (result.every((state, i) => state === target[i])) {
+				return [combo.length, BREAK]
+			}
+		}
+		return 0
+	})))
+	console.log(total);
+} else {
+	const totals: number[] = [];
 
-for (let machine = 0; machine < list.length; machine++) {
-	const { buttons, joltage, target } = list[machine];
+	for (let machine = 0; machine < list.length; machine++) {
+		const { buttons, joltage, target } = list[machine];
 
-	const counterCount = Math.max(target.length, joltage.length);
-	const variableNames = buttons.map((_, i) => `${machine}_${i}`);
+		const counterCount = Math.max(target.length, joltage.length);
+		const variableNames = buttons.map((_, i) => `${machine}_${i}`);
 
-	const constraints = Object.fromEntries(
-		range<[string, { min: number; max: number }]>(counterCount, (counterIdx) => {
-			const needed = joltage[counterIdx] ?? 0;
-			return [`counter_${counterIdx}`, { min: needed, max: needed }];
-		}),
-	);
+		const constraints = Object.fromEntries(
+			range<[string, { min: number; max: number }]>(counterCount, (counterIdx) => {
+				const needed = joltage[counterIdx] ?? 0;
+				return [`counter_${counterIdx}`, { min: needed, max: needed }];
+			}),
+		);
 
-	const variables = Object.fromEntries(
-		buttons.map((button, idx) => {
-			const entries = button.reduce<Record<string, number>>((entryAcc, counter) => {
-				const key = `counter_${counter}`;
-				entryAcc[key] = (entryAcc[key] ?? 0) + 1;
-				return entryAcc;
-			}, { total: 1 });
-			return [variableNames[idx], entries];
-		}),
-	);
+		const variables = Object.fromEntries(
+			buttons.map((button, idx) => {
+				const entries = button.reduce<Record<string, number>>((entryAcc, counter) => {
+					const key = `counter_${counter}`;
+					entryAcc[key] = (entryAcc[key] ?? 0) + 1;
+					return entryAcc;
+				}, { total: 1 });
+				return [variableNames[idx], entries];
+			}),
+		);
 
-	const { result } = lpSolve({
-		optimize: "total",
-		opType: "min",
-		constraints,
-		variables,
-		ints: Object.fromEntries(variableNames.map((name) => [name, 1])),
-	});
+		const { result } = lpSolve({
+			optimize: "total",
+			opType: "min",
+			constraints,
+			variables,
+			ints: Object.fromEntries(variableNames.map((name) => [name, 1])),
+		});
 
-	totals.push(result);
+		totals.push(result);
+	}
+
+	console.log(sum(totals));
 }
-
-console.log(sum(totals));

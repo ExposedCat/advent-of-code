@@ -2,43 +2,31 @@
   "version": "5",
   "specifiers": {
     "npm:@types/pathfinding@^0.0.9": "0.0.9",
-    "npm:pathfinding@~0.4.18": "0.4.18",
-    "npm:z3-solver@^4.15.4": "4.15.4"
+    "npm:javascript-lp-solver@~0.4.24": "0.4.24",
+    "npm:pathfinding@~0.4.18": "0.4.18"
   },
   "npm": {
     "@types/pathfinding@0.0.9": {
       "integrity": "sha512-b7tf4+gVc8+sRETzJ7pCeqhknQ9XVgYqbH5+ekcHmO5Hf/fy9BTBzSstE9mcOQc81Y0qITda8tF/UsN3huIMwg=="
     },
-    "async-mutex@0.3.2": {
-      "integrity": "sha512-HuTK7E7MT7jZEh1P9GtRW9+aTWiDWWi9InbZ5hjxrnRa39KS4BW04+xLBhYNS2aXhHUIKZSw3gj4Pn1pj+qGAA==",
-      "dependencies": [
-        "tslib"
-      ]
-    },
     "heap@0.2.5": {
       "integrity": "sha512-G7HLD+WKcrOyJP5VQwYZNC3Z6FcQ7YYjEFiFoIj8PfEr73mu421o8B1N5DKUcc8K37EsJ2XXWA8DtrDz/2dReg=="
+    },
+    "javascript-lp-solver@0.4.24": {
+      "integrity": "sha512-5edoDKnMrt/u3M6GnZKDDIPxOyFOg+WrwDv8mjNiMC2DePhy2H9/FFQgf4ggywaXT1utvkxusJcjQUER72cZmA=="
     },
     "pathfinding@0.4.18": {
       "integrity": "sha512-R0TGEQ9GRcFCDvAWlJAWC+KGJ9SLbW4c0nuZRcioVlXVTlw+F5RvXQ8SQgSqI9KXWC1ew95vgmIiyaWTlCe9Ag==",
       "dependencies": [
         "heap"
       ]
-    },
-    "tslib@2.8.1": {
-      "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="
-    },
-    "z3-solver@4.15.4": {
-      "integrity": "sha512-Tcv55+k5VsPQEX7R3gIu5ieUeLp9fP1r+8+c85dQORj/v4Fy+LvOzVzZZtg4mJjUgfIhGCg6ZfAeiUiUxDPRVg==",
-      "dependencies": [
-        "async-mutex"
-      ]
     }
   },
   "workspace": {
     "dependencies": [
       "npm:@types/pathfinding@^0.0.9",
-      "npm:pathfinding@~0.4.18",
-      "npm:z3-solver@^4.15.4"
+      "npm:javascript-lp-solver@~0.4.24",
+      "npm:pathfinding@~0.4.18"
     ]
   }
 }

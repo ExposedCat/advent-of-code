@@ -1,10 +1,10 @@
 {
-  "tasks": {
-    "run": "./run"
-  },
-  "imports": {
-    "@types/pathfinding": "npm:@types/pathfinding@^0.0.9",
-    "pathfinding": "npm:pathfinding@^0.4.18",
-    "z3-solver": "npm:z3-solver@^4.15.4"
-  }
+	"tasks": {
+		"run": "./run"
+	},
+	"imports": {
+		"@types/pathfinding": "npm:@types/pathfinding@^0.0.9",
+		"javascript-lp-solver": "npm:javascript-lp-solver@^0.4.24",
+		"pathfinding": "npm:pathfinding@^0.4.18"
+	}
 }
